@@ -4,6 +4,8 @@ a sweep Light lib for ImageView/TextView
 
 ![](./demo/shine.gif)
 
+gif looks not distinct~;
+
 ### JicPack
 Add it in your root build.gradle at the end of repositories:
 
