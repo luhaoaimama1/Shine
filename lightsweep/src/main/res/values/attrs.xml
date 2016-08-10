@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShineImageView">
+        <attr name="android:textColor" />
+        <!--默认颜色白色-->
+        <attr name="reflectionColor" format="color"  />
+        <!--默认view的宽-->
+        <attr name="reflectionWidth" format="float"/>
+        <!--默认竖直,顺时针旋转  区间:[0,90)-->
+        <attr name="reflectionRorate" format="float"/>
+    </declare-styleable>
+</resources>

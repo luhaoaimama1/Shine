@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#242424"
+    android:orientation="vertical"
+    tools:context="zone.com.shine.MainActivity">
+
+    <zone.com.lightsweep.ShineImageView
+        android:id="@+id/abc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:src="@drawable/aa"
+        app:reflectionColor="#ff0000"
+        app:reflectionRorate="30"
+        app:reflectionWidth="100" />
+
+    <zone.com.lightsweep.ShineTextView
+        android:id="@+id/tv_shine"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="ShineTextView"
+        android:textColor="#444"
+        android:textSize="40sp"
+        app:reflectionColor="#FFFFFF"
+        app:reflectionRorate="30" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="38dp"
+        android:text="执行动画" />
+</LinearLayout>
