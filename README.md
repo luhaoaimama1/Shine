@@ -54,7 +54,7 @@ Add a ShineImageView/ShineTextView to your layout:
             
 ###To start the animation:
 
-    shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
+    //or: shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
     s=new ShineAnimator();
     s.setShineView(shine);
     s.start();
