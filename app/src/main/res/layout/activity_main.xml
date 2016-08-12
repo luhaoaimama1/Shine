@@ -29,6 +29,17 @@
         app:reflectionColor="#FFFFFF"
         app:reflectionRorate="30" />
 
+    <zone.com.lightsweep.ShineTextView
+        android:id="@+id/tv_shine_colors"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="ShineTextView"
+        android:textColor="#444"
+        android:textSize="40sp"
+        app:reflectionColor="#FFFFFF"
+        app:reflectionRorate="30" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

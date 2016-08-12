@@ -18,7 +18,7 @@ import zone.com.lightsweep.utils.ShineViewUtils;
  * Created by fuzhipeng on 16/8/10.
  */
 public class ImageViewShineImpl implements ShineCallback {
-    private ShineImageView mShineImageView;
+    private ShineImageView mShineView;
     private Bitmap sourceBm;
     private BitmapShader bmShader;
     private ComposeShader composeShader;
@@ -31,7 +31,7 @@ public class ImageViewShineImpl implements ShineCallback {
 
     @Override
     public void setShineView(ShineView shineView) {
-        this.mShineImageView = (ShineImageView) shineView;
+        this.mShineView = (ShineImageView) shineView;
     }
 
     @Override
@@ -50,35 +50,43 @@ public class ImageViewShineImpl implements ShineCallback {
         canvas.setBitmap(resultBm);
         canvas.drawRect(0, 0, sourceBm.getWidth(), sourceBm.getHeight(), paint);
 
-        mShineImageView.setImageBitmap(resultBm);
+        mShineView.setImageBitmap(resultBm);
     }
 
     @Override
     public void onAnimationEnd() {
-        mShineImageView.setImageBitmap(sourceBm);
+        mShineView.setImageBitmap(sourceBm);
     }
 
     private void initShader() {
-        sourceBm = mShineImageView.getBm();
+        sourceBm = mShineView.getBm();
 
-        if (mShineImageView.getReflectWidth() == ShineImageView.DEFAULT_REFLECTION_WIDTH)
-            mShineImageView.setReflectWidth(sourceBm.getWidth());
+        if (mShineView.getReflectWidth() == ShineImageView.DEFAULT_REFLECTION_WIDTH)
+            mShineView.setReflectWidth(sourceBm.getWidth());
 
-        bmShader = new BitmapShader(mShineImageView.getBm(), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        bmShader = new BitmapShader(mShineView.getBm(), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         //get edgeColor
-        int edgeColor = ShineViewUtils.getEdgeColor(mShineImageView.getReflectColor());
+        int edgeColor = ShineViewUtils.getEdgeColor(mShineView.getReflectColor());
 
-        double rorateRadians = Math.toRadians(mShineImageView.getReflectDegree());
-        float leftH = (float) (mShineImageView.getReflectWidth() * Math.sin(rorateRadians));
-        float leftW = (float) (mShineImageView.getReflectWidth() * Math.cos(rorateRadians));
-        moveTotalLength = (float) (mShineImageView.getReflectWidth() / Math.cos(rorateRadians)
+        double rorateRadians = Math.toRadians(mShineView.getReflectDegree());
+        float leftH = (float) (mShineView.getReflectWidth() * Math.sin(rorateRadians));
+        float leftW = (float) (mShineView.getReflectWidth() * Math.cos(rorateRadians));
+        moveTotalLength = (float) (mShineView.getReflectWidth() / Math.cos(rorateRadians)
                 + sourceBm.getWidth() + sourceBm.getHeight() * Math.tan(rorateRadians)) + 1;
 
-        mLinearGradient = new LinearGradient(
-                -leftW, -leftH,//left
-                0, 0,//right
-                new int[]{edgeColor, mShineImageView.getReflectColor(), edgeColor}, null,
-                Shader.TileMode.CLAMP);
+        if (mShineView.getReflectColors()==null) {
+            mLinearGradient = new LinearGradient(
+                    -leftW, -leftH,//left
+                    0, 0,//right
+                    new int[]{edgeColor, mShineView.getReflectColor(), edgeColor}, null,
+                    Shader.TileMode.CLAMP);
+        }else{
+            mLinearGradient = new LinearGradient(
+                    -leftW, -leftH,//left
+                    0, 0,//right
+                    mShineView.getReflectColors(), mShineView.getReflectColorsPositions(),
+                    mShineView.getReflectTile());
+        }
         composeShader = new ComposeShader(bmShader, mLinearGradient, PorterDuff.Mode.SRC_ATOP);
 //        composeShader = new ComposeShader(bmShader, mLinearGradient, PorterDuff.Mode.ADD);
     }

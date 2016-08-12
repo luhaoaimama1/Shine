@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -18,13 +15,16 @@ public class ShineTextView extends TextView implements ShineView {
     private int reflectColor;
     private int textColor;
     private float reflectDegree, reflectWidth;
+    private int[] reflectColors;
+    private float[] reflectColorsPositions;
+    private Shader.TileMode reflectTile;
 
     public ShineTextView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ShineTextView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public ShineTextView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -94,6 +94,45 @@ public class ShineTextView extends TextView implements ShineView {
     public void setReflectRorate(float degree) {
         ShineViewUtils.checkReflectRorate(degree);
         this.reflectDegree = degree;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, float[] positions) {
+        this.reflectColors = colors;
+        this.reflectColorsPositions = positions;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, float[] positions, Shader.TileMode tile) {
+        this.reflectColors = colors;
+        this.reflectColorsPositions = positions;
+        this.reflectTile = tile;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, Shader.TileMode tile) {
+        this.reflectColors = colors;
+        this.reflectTile = tile;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors) {
+        this.reflectColors = colors;
+    }
+
+    @Override
+    public int[] getReflectColors() {
+        return reflectColors;
+    }
+
+    @Override
+    public float[] getReflectColorsPositions() {
+        return reflectColorsPositions;
+    }
+
+    @Override
+    public Shader.TileMode getReflectTile() {
+        return this.reflectTile == null ? Shader.TileMode.CLAMP : this.reflectTile;
     }
 
     @Override

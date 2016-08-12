@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Shader;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -18,6 +19,9 @@ public class ShineImageView extends ImageView implements ShineView {
 
     private int reflectColor;
     private float reflectDegree, reflectWidth;
+    private int[] reflectColors;
+    private float[] reflectColorsPositions;
+    private Shader.TileMode reflectTile;
 
     public ShineImageView(Context context) {
         super(context);
@@ -104,6 +108,45 @@ public class ShineImageView extends ImageView implements ShineView {
     @Override
     public float getReflectWidth() {
         return reflectWidth;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, float[] positions) {
+        this.reflectColors = colors;
+        this.reflectColorsPositions = positions;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, float[] positions, Shader.TileMode tile) {
+        this.reflectColors = colors;
+        this.reflectColorsPositions = positions;
+        this.reflectTile = tile;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors, Shader.TileMode tile) {
+        this.reflectColors = colors;
+        this.reflectTile = tile;
+    }
+
+    @Override
+    public void setReflectColors(int[] colors) {
+        this.reflectColors = colors;
+    }
+
+    @Override
+    public int[] getReflectColors() {
+        return reflectColors;
+    }
+
+    @Override
+    public Shader.TileMode getReflectTile() {
+        return this.reflectTile == null ? Shader.TileMode.CLAMP : this.reflectTile;
+    }
+
+    @Override
+    public float[] getReflectColorsPositions() {
+        return reflectColorsPositions;
     }
 
 }
