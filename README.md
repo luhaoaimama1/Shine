@@ -2,7 +2,7 @@
 
 a sweep Light lib for ImageView/TextView
 
-![](./demo/shine.gif)
+![](./demo/ShineFinal.gif)
 
 gif looks not distinct~;
 
@@ -18,7 +18,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.luhaoaimama1:Shine:v1.0'
+	        compile 'com.github.luhaoaimama1:Shine:1.01'
 	}
     
 # Easy use:
@@ -54,6 +54,7 @@ Add a ShineImageView/ShineTextView to your layout:
             
 ###To start the animation:
 
+    shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
     s=new ShineAnimator();
     s.setShineView(shine);
     s.start();
