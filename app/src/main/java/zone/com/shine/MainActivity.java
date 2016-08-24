@@ -4,6 +4,8 @@ import android.graphics.Shader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
+
 import zone.com.lightsweep.ShineAnimator;
 import zone.com.lightsweep.ShineImageView;
 import zone.com.lightsweep.ShineTextView;
@@ -39,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             private void run(ShineAnimator s, ShineView shine) {
                 if(s!=null)
                     s.cancel();
-                s=new ShineAnimator();
-                s.setShineView(shine);
-                s.start();
+                s=new ShineAnimator().setShineView(shine).setInterpolator(new LinearInterpolator()).start();
             }
         });
     }

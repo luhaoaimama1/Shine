@@ -26,4 +26,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
+
+    compile 'com.github.luhaoaimama1:ZAnimate:1.0.0'
 }

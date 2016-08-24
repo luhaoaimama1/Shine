@@ -55,10 +55,8 @@ Add a ShineImageView/ShineTextView to your layout:
 ###To start the animation:
 
     //or: shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
-    s=new ShineAnimator();
-    s.setShineView(shine);
-    s.start();
-  
+    new ShineAnimator().setShineView(shine).setInterpolator(new LinearInterpolator()).start();
+   
 ###To stop it:
 
     shimmer.cancel();
