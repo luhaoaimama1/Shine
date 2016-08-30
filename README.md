@@ -54,6 +54,12 @@ Add a ShineImageView/ShineTextView to your layout:
     //or: shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
     new ShineAnimator().setShineView(shine).setInterpolator(new LinearInterpolator()).start();
    
+### To start DelayEvery the animation:
+
+    //or: shine.setReflectColors(new int[]{Color.RED,Color.YELLOW,Color.BLUE,Color.CYAN},Shader.TileMode.MIRROR);
+    //setDelayEvery(long delayDuration, long riseExtra)-->每次的delay时间=delayDuration + 动画运行次数 * riseExtra;
+    new ShineAnimator().setShineView(shine).setDelayEvery(2000, -500).setInterpolator(new LinearInterpolator()).start()
+   
 ###To stop it:
 
     shimmer.cancel();
