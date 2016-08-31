@@ -27,5 +27,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.0'
     //    compile project(path: ':lightsweep')
-    compile 'com.github.luhaoaimama1:Shine:1.05'
+    compile 'com.github.luhaoaimama1:Shine:1.06'
 }
